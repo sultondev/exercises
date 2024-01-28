@@ -2,12 +2,33 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss"],
-  dir: {
-      assets: './src/assets',
-      layouts: './src/layouts',
-      middleware: './src/middleware',
-      modules: './src/modules',
-      pages: './src/pages',
-      plugins: './src/plugins',
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.API_HOST || 'https://wrong.com/'
     }
+  },
+  imports: {
+    dirs: [
+      
+      "~/src/components/**"
+    ]
+  },
+  srcDir: "src/",
+  components: {
+    dirs: [
+      {
+        "path": "~/components/**",
+        "global": true
+      },
+      "~/src/components"
+    ],
+  },
+  alias: {
+    '@': 'src/'
+  },
+  vue: {  
+    compilerOptions: {
+      isCustomElement: (tag) => ['lite-youtube'].includes(tag),
+    },
+  }
 })          

@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { URLS } from '~/constants/urls';
+import type { ProductItem } from '~/types/apiTypes';
+
 const route = useRoute()
+
 </script>
 
 <template>
